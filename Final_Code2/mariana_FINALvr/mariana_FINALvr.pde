@@ -1,23 +1,3 @@
-
-
-// code 1 FA 18
-// bryan ma
-
-// generative portrait 1
-
-// this sketch, as well as w10_05_portrait2, uses the basic approach we used
-// in class to create a generative representation of an image loaded into memory.
-// use one of these two sketches as the starting point to create your own 
-// generative graphic "portrait". try using red(), green(), blue(), saturation(), 
-// hue(), and brightness() to get values to represent in your drawing.
-
-// bonus - apply a class inspired by w10_03_paintbrush to your approach.
-// instead of drawing a simple ellipse or other shape, create an instance 
-// of the brushstroke class at every sourced point that you get() the color on.
-
-// in the case of w10_05_portrait2, they would all need to be loaded into 
-// an arraylist and drawn all together, as well as modified in order to have 
-// a particle-like lifetime, or something similar.
 import processing.pdf.*;
 
 boolean saveOneFrame = false; 
@@ -26,7 +6,7 @@ int gridW = 10;
 int gridH = 10;
 
 PImage img;
-//Brushstroke brushstroke [][]; //make an array list 
+//Brushstroke brushstroke [][];
 color c [][]; 
 int rows, cols;
 int size = 15; 
@@ -37,7 +17,7 @@ Brushstroke brushstroke[][];
 
 void setup() {
   size(785, 785);
-  img = loadImage("doggo.jpg");
+  img = loadImage("doggo2.jpg");
   background(255);
   frameRate(500); 
   beginRecord(PDF, "Line.pdf"); 
@@ -62,7 +42,11 @@ void draw() {
   //int x = mouseX;
   //int y = mouseY;
   //color c = img.get(gridW, gridH);
+  
+  //noise makes the random controled to what pixals have already been drawn
   float n = noise(t); 
+  
+  //floor = rounds down
   int rI = floor(map(n, 0, 1, 0, cols)); 
  
    t+= 0.01; 
@@ -83,10 +67,7 @@ void draw() {
       //}else{
       //   v = 0; 
       //}
-        
-
-    
-        
+       
  
        //modulo conditional here 
        //every 60 frames, draw a new pixel 
